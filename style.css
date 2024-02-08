@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    flex-direction: column; /* Stacks child elements vertically */
+    align-items:center; /* Centers them horizontally */
+    justify-content: flex-start; /* Aligns children to the start of the main axis */
+    height: 100vh;
+    margin: 0;
+    padding: 24px;
+    color: #cccccc;
+    background-color: #0D0D0D;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+
+
+.navbar {
+    display: flex;
+    align-items:flex-start;
+    justify-content: space-between;
+    color: white;
+    padding: 0 16px 0 16px;
+}
+
+.navbar-logo img {
+    height: 50px; /* Adjust based on your logo's size */
+}
+
+p {
+    color: #7a7a7a;
+    padding: 0 16px 0 16px;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+
+
+.selectors-container {
+    display: flex;
+    justify-content:space-evenly; /* Adjust spacing */
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px 0 16px 0;
+    background-color: rgba(23, 23, 23, 6.0); 
+    border-radius: 16px;
+   
+}
+
+.select-container {
+    display: flex;
+    flex-direction: column; /* Keeps label on top of select */
+    align-items: flex-start; /* Center aligns the items for aesthetics */
+    padding: 0 4px; 
+    
+}
+
+.select-container-head{
+    display: none;
+}
+
+label {
+    display: block; /* Makes the label take up the full width, pushing anything else below it */
+    margin-bottom: 4px; /* Space between the label and the select field */
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+select {
+  background-color: rgba(221, 255, 0, 0.06);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  line-height: 16px;
+  color: #DDFF00;
+  border: 2px solid rgba(221, 255, 0, 0.06);
+  border-radius: 8px;
+  padding: 8px 8px 8px 8px;
+  cursor: pointer;
+}
+
+.downloadBtn {
+  background-color: rgba(221, 255, 0, 0.06);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  line-height: 16px;
+  color: #DDFF00;
+  border: 2px solid rgba(221, 255, 0, 0.06);
+  border-radius: 8px;
+  padding: 12px 16px 12px 16px;
+  cursor: pointer;
+}
+
+#avatarPreview {
+    margin: 16px 0 16px 0;
+    border-radius: 16px;
+    border: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

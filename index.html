@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Avatar Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap')
+    </style>
+
+    </head>
+    
+<body>
+
+     <div class="page-content">
+    
+       <nav class="navbar">
+         <div class="navbar-logo">
+     <img src="Green.png" alt="Poko Logo">
+     </div>
+       </nav>
+     
+       <div class="introduction">
+        <p>Create your unique Poko avatar!<br>Explore various features and accessories to design<br>a personalized avatar that showcases your Poko spirit.</p>
+     </div>
+    
+       <div class="selectors-container">
+        <div class="select-container">
+            <label for="bg">Background</label>
+            <select id="bg" onchange="updateAvatar('bg', this.value)">
+                <option value="bg1.png">Light Red</option>
+                <option value="bg2.png">Yellow Green</option>
+                <option value="bg3.png">Cyan</option>
+                <option value="bg4.png">Purple</option>
+                <option value="bg5.png">Blue Green</option>
+                <option value="bg6.png">Red Orange</option>
+            </select>
+        </div>
+        <div class="select-container-head">
+            <label for="head">Head</label>
+            <select id="head" onchange="updateAvatar('head', this.value)">
+                <option value="head.png">Head 1</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <label for="eyes">Eyes</label>
+            <select id="eyes" onchange="updateAvatar('eyes', this.value)">
+                <option value="eyes1.png">Poko Eyes</option>
+                <option value="eyes2.png">Closed Eyes</option>
+                <option value="eyes3.png">Gangster</option>
+                <option value="eyes4.png">Surprised</option>
+                <option value="eyes5.png">Focused</option>
+                <option value="eyes6.png">Wasted</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <label for="mouth">Mouth</label>
+            <select id="mouth" onchange="updateAvatar('mouth', this.value)">
+                <option value="mouth1.png">Open</option>
+                <option value="mouth2.png">Smile</option>
+                <option value="mouth3.png">Surprised</option>
+                <option value="mouth4.png">Happy</option>
+                <option value="mouth5.png">Dracula</option>
+                <option value="mouth6.png">Smirk</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <label for="hat">Hat</label>
+            <select id="hat" onchange="updateAvatar('mouth', this.value)">
+                <option value="hat6.png">None</option>
+                <option value="hat2.png">Helmet</option>
+                <option value="hat3.png">Beanie</option>
+                <option value="hat4.png">Halo</option>
+                <option value="hat5.png">Beret</option>
+                <option value="hat1.png">Cap</option>
+            </select>
+        </div>
+     </div>
+
+       <div id="avatarPreview">
+        <canvas id="avatarCanvas" width="500" height="500"></canvas>
+    </div>
+      
+       <button class="downloadBtn">Download your avatar</button>
+     
+     </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
