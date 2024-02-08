@@ -59,11 +59,6 @@ function onPartChange(part, fileName) {
 }
 
 
-
-document.getElementById('bg').addEventListener('change', function() {
-    onPartChange('bg', this.value);
-});
-
 document.getElementById('hat').addEventListener('change', function() {
     onPartChange('hat', this.value);
 });
@@ -80,20 +75,14 @@ document.getElementById('mouth').addEventListener('change', function() {
     onPartChange('mouth', this.value);
 });
 
+document.getElementById('bg').addEventListener('change', function() {
+    onPartChange('bg', this.value);
+});
+
 // Initialize the avatar with the default selection
 
 updateAvatar();
 
-document.getElementById('downloadBtn').addEventListener('click', function() {
-    const canvas = document.getElementById('avatarCanvas');
-    const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    
-    
-     // Create a temporary link to trigger the download
-    let downloadLink = document.createElement('a');
-    downloadLink.setAttribute('download', 'Your Poko Avatar.png');
-    downloadLink.setAttribute('href', image);
-    downloadLink.click();
-});
+
 
 
