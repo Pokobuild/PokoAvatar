@@ -58,13 +58,15 @@ function onPartChange(part, fileName) {
     updateAvatar();
 }
 
-document.getElementById('bg').addEventListener('change', function() {
-    onPartChange('bg', this.value);
-});
+
 
 
 document.getElementById('hat').addEventListener('change', function() {
     onPartChange('hat', this.value);
+});
+
+document.getElementById('bg').addEventListener('change', function() {
+    onPartChange('bg', this.value);
 });
 
 document.getElementById('head').addEventListener('change', function() {
