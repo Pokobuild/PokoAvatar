@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas.toBlob(function(blob) {
             const url = URL.createObjectURL(blob);
             const downloadLink = document.createElement('a');
-            downloadLink.download = 'CustomAvatar.png';
+            downloadLink.download = 'MyPokoAvatar.png';
             downloadLink.href = url;
             downloadLink.click();
             URL.revokeObjectURL(url); // Clean up
