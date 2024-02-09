@@ -66,7 +66,7 @@ select ,.downloadBtn {
     color: #DDFF00;
     border: 2px solid rgba(221, 255, 0, 0.06);
     border-radius: 8px;
-    padding: 8px;
+    padding: 16px;
     cursor: pointer;
 }
 
