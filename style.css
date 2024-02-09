@@ -70,8 +70,8 @@ select, .downloadBtn {
 }
 
 #avatarCanvas {
-    width: 80vw;
-    height: 80vw; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
     max-width: 500px;
     max-height: 500px;
     margin: 16px 0;
@@ -93,8 +93,8 @@ select, .downloadBtn {
     }
 
     #avatarCanvas {
-        width: 500px; /* Fixed size for larger screens */
-        height: 500px;
+        width: 100%; /* Fixed size for larger screens */
+        height: auto;
     }
 
     .navbar-logo img {
