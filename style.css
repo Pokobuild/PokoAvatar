@@ -98,3 +98,15 @@ select {
     justify-content: center;
     align-items: center;
 }
+
+@media (min-width: 768px) {
+    .selectors-container {
+        justify-content: space-around;
+        flex-wrap: nowrap;
+    }
+
+    #avatarPreview {
+        width: 500px;
+        height: 500px;
+    }
+}
