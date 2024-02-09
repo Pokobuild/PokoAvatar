@@ -1,40 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('avatarCanvas');
     const ctx = canvas.getContext('2d');
+    let dpi = window.devicePixelRatio;
 
-    // Adjust canvas for high DPI displays
-    function adjustCanvasForHighDPI(canvas) {
-        const dpi = window.devicePixelRatio || 1;
+    // Adjust canvas size for high DPI displays without scaling drawing operations
+    function adjustCanvasForHighDPI() {
         const style = getComputedStyle(canvas);
         const width = parseInt(style.width) * dpi;
         const height = parseInt(style.height) * dpi;
         canvas.width = width;
         canvas.height = height;
-        canvas.style.width = `${width / dpi}px`;
-        canvas.style.height = `${height / dpi}px`;
-        ctx.scale(dpi, dpi);
+        canvas.style.width = `${parseInt(style.width)}px`;
+        canvas.style.height = `${parseInt(style.height)}px`;
     }
-    adjustCanvasForHighDPI(canvas);
+    adjustCanvasForHighDPI();
 
-    // Object to keep track of the selected parts
     const selectedParts = {
         bg: 'images/bg/bg1.png',
-        head: 'images/head/head.png',
+        head: 'images/head/head1.png',
         eyes: 'images/eyes/eyes1.png',
         mouth: 'images/mouth/mouth1.png',
         hat: 'images/hat/hat6.png'
     };
 
-    // Draw part with scaling to fit within the canvas
     function drawPart(partPath) {
         return new Promise(resolve => {
             const img = new Image();
             img.crossOrigin = "anonymous"; // Enable CORS for external images
             img.onload = function() {
-                // Scale and center the image
-                const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
-                const x = (canvas.width / 2) - (img.width / 2) * scale;
-                const y = (canvas.height / 2) - (img.height / 2) * scale;
+                // Calculate the scale to fit the image within the canvas, considering DPI
+                const scale = Math.min((canvas.width / dpi) / img.width, (canvas.height / dpi) / img.height);
+                const x = ((canvas.width / dpi) - img.width * scale) / 2;
+                const y = ((canvas.height / dpi) - img.height * scale) / 2;
                 ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
                 resolve();
             };
@@ -42,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Update the avatar based on the selected parts
     async function updateAvatar() {
         ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas for redrawing
         for (const part of Object.keys(selectedParts)) {
@@ -50,20 +46,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Handle changes in part selection
     function onPartChange(part, fileName) {
         selectedParts[part] = 'images/' + part + '/' + fileName;
         updateAvatar();
     }
 
-    // Attach event listeners for part changes
     ['bg', 'head', 'eyes', 'mouth', 'hat'].forEach(part => {
         document.getElementById(part)?.addEventListener('change', function() {
             onPartChange(part, this.value);
         });
     });
 
-    // Download button functionality
     document.querySelector('.downloadBtn').addEventListener('click', function() {
         canvas.toBlob(function(blob) {
             const url = URL.createObjectURL(blob);
@@ -71,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             downloadLink.download = 'MyPokoAvatar.png';
             downloadLink.href = url;
             downloadLink.click();
-            URL.revokeObjectURL(url); // Clean up the object URL after download
+            URL.revokeObjectURL(url); // Clean up
         }, 'image/png');
     });
 
