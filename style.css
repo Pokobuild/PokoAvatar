@@ -58,7 +58,7 @@ label {
     text-transform: uppercase;
 }
 
-.select {
+select {
     width: 100%;
     background-color: rgba(221, 255, 0, 0.06);
     font-family: "Space Grotesk", sans-serif;
