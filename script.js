@@ -58,16 +58,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    document.getElementById('downloadBtn').addEventListener('click', function() {
+    //download button
+    document.querySelector('.downloadBtn').addEventListener('click', function() {
+        // Assuming you have a function defined to handle the canvas download
         canvas.toBlob(function(blob) {
             const url = URL.createObjectURL(blob);
             const downloadLink = document.createElement('a');
             downloadLink.download = 'CustomAvatar.png';
             downloadLink.href = url;
             downloadLink.click();
-            URL.revokeObjectURL(url);
+            URL.revokeObjectURL(url); // Clean up
         }, 'image/png');
     });
+    
 
     updateAvatar(); // Initialize the avatar
 });
