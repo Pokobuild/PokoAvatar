@@ -69,8 +69,8 @@ select, .downloadBtn {
     cursor: pointer;
 }
 
-#avatarPreview {
-    /*width: 80vw;
+#avatarCanvas {
+    width: 80vw;
     height: 80vw; /* Maintain aspect ratio */
     max-width: 500px;
     max-height: 500px;
@@ -92,7 +92,7 @@ select, .downloadBtn {
         padding: 0 4px; /* Restore padding */
     }
 
-    #avatarPreview {
+    #avatarCanvas {
         width: 500px; /* Fixed size for larger screens */
         height: 500px;
     }
