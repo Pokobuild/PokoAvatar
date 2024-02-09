@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function drawPart(partPath) {
         return new Promise(resolve => {
             const img = new Image();
-            //img.crossOrigin = "anonymous"; // Enable CORS
+            img.crossOrigin = "anonymous"; // Enable CORS
             img.onload = function() {
                 ctx.drawImage(img, 0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
                 resolve();
