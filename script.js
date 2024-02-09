@@ -25,18 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
         hat: 'images/hat/hat6.png'
     };
 
-    // Function to draw each part with CORS consideration
     function drawPart(partPath) {
-        return new Promise(resolve => {
-            const img = new Image();
-            img.crossOrigin = "anonymous";
-            img.onload = function() {
-                ctx.drawImage(img, 0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
-                resolve();
-            };
-            img.src = partPath;
-        });
-    }
+    return new Promise(resolve => {
+        const img = new Image();
+        img.onload = function() {
+            // Calculate the scale to fit the image within the canvas
+            const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+            const x = (canvas.width / 2) - (img.width / 2) * scale;
+            const y = (canvas.height / 2) - (img.height / 2) * scale;
+            ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+            resolve();
+        };
+        img.crossOrigin = "anonymous";
+        img.src = partPath;
+    });
+}
+
 
     async function updateAvatar() {
         ctx.clearRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
