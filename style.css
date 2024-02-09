@@ -74,7 +74,6 @@ select, .downloadBtn {
     height: 80vw; /* Maintain aspect ratio */
     max-width: 500px;
     max-height: 500px;
-    aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
     margin: 16px 0;
     border-radius: 16px;
     overflow: hidden;
