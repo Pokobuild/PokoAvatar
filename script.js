@@ -47,25 +47,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Example event listener for part change
-    document.getElementById('bg').addEventListener('change', function() {
-        onPartChange('bg', this.value);
-    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('bg')) {
+        document.getElementById('bg').addEventListener('change', function() {
+            onPartChange('bg', this.value);
+        });
+    }
     
-    document.getElementById('head').addEventListener('change', function() {
-        onPartChange('head', this.value);
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('head')) {
+        document.getElementById('head').addEventListener('change', function() {
+            onPartChange('head', this.value);
+        });
+    }
     
-    document.getElementById('eyes').addEventListener('change', function() {
-        onPartChange('eyes', this.value);
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('eyes')) {
+        document.getElementById('eyes').addEventListener('change', function() {
+            onPartChange('eyes', this.value);
+        });
+    }
     
-    document.getElementById('mouth').addEventListener('change', function() {
-        onPartChange('mouth', this.value);
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('mouth')) {
+        document.getElementById('mouth').addEventListener('change', function() {
+            onPartChange('mouth', this.value);
+        });
+    }
     
-    document.getElementById('hat').addEventListener('change', function() {
-        onPartChange('hat', this.value);
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('hat')) {
+        document.getElementById('hat').addEventListener('change', function() {
+            onPartChange('hat', this.value);
+        });
+    }
+    
+   
     // Add similar event listeners for other parts...
 
     document.getElementById('downloadBtn').addEventListener('click', function() {
