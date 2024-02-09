@@ -75,8 +75,8 @@ select, .downloadBtn {
 #avatarCanvas {
     width: 100%;
     height: auto; /* Maintain aspect ratio */
-    /*max-width: 500px;
-    max-height: 500px;*/
+    max-width: 500px;
+    max-height: 500px;
     margin: 16px 0;
     border-radius: 16px;
     overflow: hidden;
