@@ -39,8 +39,6 @@ p {
     padding: 16px;
     background-color: rgba(23, 23, 23, 0.6);
     border-radius: 16px;
-    /*width: calc(100% - 32px); /* Account for padding */
-    width: 100%;
 }
 
 .select-container {
