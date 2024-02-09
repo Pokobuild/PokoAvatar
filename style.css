@@ -58,7 +58,7 @@ label {
     text-transform: uppercase;
 }
 
-select, .downloadBtn {
+.select {
     width: 100%;
     background-color: rgba(221, 255, 0, 0.06);
     font-family: "Space Grotesk", sans-serif;
@@ -69,6 +69,18 @@ select, .downloadBtn {
     padding: 8px;
     cursor: pointer;
 }
+
+.downloadBtn {
+    width: 100%;
+    background-color: rgba(221, 255, 0, 0.06);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 13px;
+    color: #DDFF00;
+    border: 2px solid rgba(221, 255, 0, 0.06);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+{
 
 #avatarCanvas {
     width: 100%;
