@@ -1,88 +1,89 @@
-const canvas = document.getElementById('avatarCanvas');
-const ctx = canvas.getContext('2d');
-
-// High DPI canvas adjustment function
-function adjustCanvasSize(canvas, width, height) {
-    const dpi = window.devicePixelRatio;
-
-    // Set the 'drawing buffer' size
-    canvas.width = width * dpi;
-    canvas.height = height * dpi;
-
-    // Scale the canvas back down with CSS (to the original intended size)
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
-
-    // Scale the canvas drawing content to match the CSS size
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('avatarCanvas');
     const ctx = canvas.getContext('2d');
-    ctx.scale(dpi, dpi);
-}
 
-// Adjust your canvas size for high DPI screens
-adjustCanvasSize(canvas, 500, 500); // Set this to your desired CSS display size
+    adjustCanvasForHighDPI(canvas); // Adjust canvas for high DPI screens
 
-// Object to keep track of the selected parts
-const selectedParts = {
-    bg: 'images/bg/bg1.png',
-    head: 'images/head/head.png',
-    eyes: 'images/eyes/eyes1.png',
-    mouth: 'images/mouth/mouth1.png',
-    hat: 'images/hat/hat6.png'
-};
+    // Object to keep track of the selected parts
+    const selectedParts = {
+        bg: 'images/bg/bg1.png', // Ensure CORS settings if images are external
+        head: 'images/head/head.png',
+        eyes: 'images/eyes/eyes1.png',
+        mouth: 'images/mouth/mouth1.png',
+        hat: 'images/hat/hat6.png'
+    };
 
-function drawPart(partPath) {
-    return new Promise(resolve => {
-        const img = new Image();
-        img.onload = function() {
-            // Adjust drawImage to not scale the image based on DPI; it's already accounted for
-            ctx.drawImage(img, 0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
-            resolve();
-        };
-        img.src = partPath;
-    });
-}
-
-async function updateAvatar() {
-    // Clear the canvas before redrawing everything
-    ctx.clearRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
-
-    // Redraw each part in order
-    for (const part of Object.keys(selectedParts)) {
-        await drawPart(selectedParts[part]);
+    // Adjust canvas for high DPI displays
+    function adjustCanvasForHighDPI(canvas) {
+        const dpi = window.devicePixelRatio || 1;
+        const style = getComputedStyle(canvas);
+        const width = parseInt(style.width) * dpi;
+        const height = parseInt(style.height) * dpi;
+        canvas.width = width;
+        canvas.height = height;
+        canvas.style.width = `${width / dpi}px`;
+        canvas.style.height = `${height / dpi}px`;
+        ctx.scale(dpi, dpi);
     }
-}
 
-// Event listeners for part changes and download function remain the same
-function onPartChange(part, fileName) {
-    selectedParts[part] = 'images/' + part + '/' + fileName;
-    updateAvatar();
-}
+    // Function to draw each part with CORS consideration
+    function drawPart(partPath) {
+        return new Promise(resolve => {
+            const img = new Image();
+            //img.crossOrigin = "anonymous"; // Enable CORS
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
+                resolve();
+            };
+            img.src = partPath;
+        });
+    }
 
+    async function updateAvatar() {
+        ctx.clearRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio); // Clear canvas
+        for (const part of Object.keys(selectedParts)) { // Redraw each part
+            await drawPart(selectedParts[part]);
+        }
+    }
 
-document.getElementById('hat').addEventListener('change', function() {
-    onPartChange('hat', this.value);
+    // Example event listener for part change
+    document.getElementById('bg').addEventListener('change', function() {
+        onPartChange('bg', this.value);
+    });
+    
+    document.getElementById('head').addEventListener('change', function() {
+        onPartChange('head', this.value);
+    });
+    
+    document.getElementById('eyes').addEventListener('change', function() {
+        onPartChange('eyes', this.value);
+    });
+    
+    document.getElementById('mouth').addEventListener('change', function() {
+        onPartChange('mouth', this.value);
+    });
+    
+    document.getElementById('hat').addEventListener('change', function() {
+        onPartChange('hat', this.value);
+    });
+    // Add similar event listeners for other parts...
+
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+        canvas.toBlob(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const downloadLink = document.createElement('a');
+            downloadLink.download = 'CustomAvatar.png';
+            downloadLink.href = url;
+            downloadLink.click();
+            URL.revokeObjectURL(url); // Clean up
+        }, 'image/png');
+    });
+
+    // Handle part changes
+    function onPartChange(part, fileName) {
+        selectedParts[part] = 'images/' + part + '/' + fileName;
+        updateAvatar();
+    }
+
+    updateAvatar(); // Initialize the avatar
 });
-
-document.getElementById('head').addEventListener('change', function() {
-    onPartChange('head', this.value);
-});
-
-document.getElementById('eyes').addEventListener('change', function() {
-    onPartChange('eyes', this.value);
-});
-
-document.getElementById('mouth').addEventListener('change', function() {
-    onPartChange('mouth', this.value);
-});
-
-document.getElementById('bg').addEventListener('change', function() {
-    onPartChange('bg', this.value);
-});
-
-// Initialize the avatar with the default selection
-
-updateAvatar();
-
-
-
-
