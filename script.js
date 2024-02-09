@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         head: 'images/head/head.png',
         eyes: 'images/eyes/eyes1.png',
         mouth: 'images/mouth/mouth1.png',
-        hat: 'images/hat/hat1.png'
+        hat: 'images/hat/hat6.png'
     };
 
     function adjustCanvasForHighDPI(canvas) {
