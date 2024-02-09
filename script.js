@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const selectedParts = {
         bg: 'images/bg/bg1.png',
-        head: 'images/head/head1.png',
+        head: 'images/head/head.png',
         eyes: 'images/eyes/eyes1.png',
         mouth: 'images/mouth/mouth1.png',
         hat: 'images/hat/hat1.png'
