@@ -32,9 +32,11 @@ p {
 
 .selectors-container {
     display: flex;
-    flex-direction: column; /* Stack selectors vertically on small screens */
-    align-items: center; /* Center align selectors for aesthetics */
-    padding: 24px;
+    flex-direction: row; 
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 16px;
     background-color: rgba(23, 23, 23, 0.6);
     border-radius: 16px;
     /*width: calc(100% - 32px); /* Account for padding */
